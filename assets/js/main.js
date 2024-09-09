@@ -93,42 +93,31 @@
         }
     });
 
-
-    (function ($) {
-        $('.vendor-carousel').owlCarousel({
+    $(document).ready(function () {
+        // Initialize the Owl Carousel
+        var owl = $('.vendor-carousel').owlCarousel({
             loop: true,
-            margin: 25,
-            rtl: true, // Enable RTL mode
-            dots: false,
-            autoplay: false,
-            smartSpeed: 1000,
+            margin: 10,
+            rtl:true,
+            nav: false, // Disable default nav
+            autoplay: true,
             responsive: {
-                0: {
-                    items: 1
-                },
-                576: {
-                    items: 2
-                },
-                768: {
-                    items: 3
-                },
-                992: {
-                    items: 4
-                }
+                0: { items: 2 },
+                600: { items: 5 },
+                1000: { items: 5 }
             }
         });
-    
-        // Add event listeners for custom buttons
-        $('.btn-prev').on('click', function () {
-            $('.vendor-carousel').trigger('prev.owl.carousel');
+
+        // Custom Next Arrow
+        $('#customNextBtn').click(function () {
+            owl.trigger('next.owl.carousel');
         });
-    
-        $('.btn-next').on('click', function () {
-            $('.vendor-carousel').trigger('next.owl.carousel');
+
+        // Custom Previous Arrow
+        $('#customPrevBtn').click(function () {
+            owl.trigger('prev.owl.carousel');
         });
-    
-    })(jQuery);
-    
+    });
 
 })(jQuery);
 
@@ -195,7 +184,7 @@ $(".custom-carousel").owlCarousel({
     autoWidth: true,
     loop: true,
     rtl: true, // Enable RTL mode
-    dots:true
+    dots: true
 });
 
 $(document).ready(function () {
@@ -206,8 +195,8 @@ $(document).ready(function () {
 });
 
 
-document.querySelectorAll('.custom-popUpOpen').forEach(function(button) {
-    button.addEventListener('click', function(event) {
+document.querySelectorAll('.custom-popUpOpen').forEach(function (button) {
+    button.addEventListener('click', function (event) {
         event.preventDefault();
         const link = button.getAttribute('data-link');
         document.getElementById('myInput').value = link;
@@ -239,20 +228,20 @@ function copy() {
 function copy() {
     // Get the text field
     var copyText = document.getElementById("myInput");
-  
+
     // Select the text field
     copyText.select();
     copyText.setSelectionRange(0, 99999); // For mobile devices
-  
-     // Copy the text inside the text field
+
+    // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
-  
+
     // Alert the copied text
     // alert("Copied the text: " + copyText.value);
-  }
+}
 
 
-  let swiperCards = new Swiper(".card__content", {
+let swiperCards = new Swiper(".card__content", {
     loop: true,
     spaceBetween: 32,
     grabCursor: true,
