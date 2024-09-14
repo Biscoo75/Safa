@@ -98,7 +98,7 @@
         var owl = $('.vendor-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            rtl:true,
+            rtl: true,
             nav: false, // Disable default nav
             autoplay: true,
             responsive: {
@@ -265,4 +265,144 @@ let swiperCards = new Swiper(".card__content", {
             slidesPerView: 3,
         },
     },
+});
+
+
+
+// Params
+let mainSliderSelector = '.main-slider',
+    navSliderSelector = '.nav-slider',
+    interleaveOffset = 0.5;
+
+// Main Slider
+let mainSliderOptions = {
+    loop: true,
+    speed: 1000,
+    autoplay: {
+        delay: 3000
+    },
+    loopAdditionalSlides: 10,
+    grabCursor: true,
+    watchSlidesProgress: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    on: {
+        init: function () {
+            this.autoplay.stop();
+        },
+        imagesReady: function () {
+            this.el.classList.remove('loading');
+            this.autoplay.start();
+        },
+        slideChangeTransitionEnd: function () {
+            let swiper = this,
+                captions = swiper.el.querySelectorAll('.caption');
+            for (let i = 0; i < captions.length; ++i) {
+                captions[i].classList.remove('show');
+            }
+            swiper.slides[swiper.activeIndex].querySelector('.caption').classList.add('show');
+        },
+        progress: function () {
+            let swiper = this;
+            for (let i = 0; i < swiper.slides.length; i++) {
+                let slideProgress = swiper.slides[i].progress,
+                    innerOffset = swiper.width * interleaveOffset,
+                    innerTranslate = slideProgress * innerOffset;
+
+                swiper.slides[i].querySelector(".slide-bgimg").style.transform =
+                    "translateX(" + innerTranslate + "px)";
+            }
+        },
+        touchStart: function () {
+            let swiper = this;
+            for (let i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = "";
+            }
+        },
+        setTransition: function (speed) {
+            let swiper = this;
+            for (let i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = speed + "ms";
+                swiper.slides[i].querySelector(".slide-bgimg").style.transition =
+                    speed + "ms";
+            }
+        }
+    }
+};
+let mainSlider = new Swiper(mainSliderSelector, mainSliderOptions);
+
+// Navigation Slider
+let navSliderOptions = {
+    loop: true,
+    loopAdditionalSlides: 10,
+    speed: 1000,
+    spaceBetween: 5,
+    slidesPerView: 5,
+    centeredSlides: true,
+    touchRatio: 0.2,
+    slideToClickedSlide: true,
+    direction: 'vertical',
+    on: {
+        imagesReady: function () {
+            this.el.classList.remove('loading');
+        },
+        click: function () {
+            mainSlider.autoplay.stop();
+        }
+    }
+};
+let navSlider = new Swiper(navSliderSelector, navSliderOptions);
+
+// Matching sliders
+mainSlider.controller.control = navSlider;
+navSlider.controller.control = mainSlider;
+
+
+
+
+// Initialize the intlTelInput instances
+var input1 = document.querySelector("#mobile");
+var iti1 = window.intlTelInput(input1, {
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+        fetch("https://ipapi.co/json")
+            .then(res => res.json())
+            .then(data => callback(data.country_code))
+            .catch(() => callback("us"));
+    },
+});
+
+var input2 = document.querySelector("#mobile2");
+var iti2 = window.intlTelInput(input2, {
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+        fetch("https://ipapi.co/json")
+            .then(res => res.json())
+            .then(data => callback(data.country_code))
+            .catch(() => callback("us"));
+    },
+});
+
+// Handle form submission
+document.getElementById("phoneForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get the full phone number with country code
+    var phoneNumber1 = iti1.getNumber();
+    var phoneNumber2 = iti2.getNumber();
+
+    // Log the phone numbers
+    console.log("Primary Phone Number:", phoneNumber1);
+    console.log("Secondary Phone Number:", phoneNumber2);
+
+    // You can now send this data to your server or perform other actions
+});
+$(document).ready(function () {
+    $('#mySelect').select2({
+        width: '100%', // Adjust the width as needed
+        placeholder: "Select an option", // Placeholder text
+        allowClear: true // Allows clearing of selection
+    });
 });

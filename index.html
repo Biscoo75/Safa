@@ -56,8 +56,8 @@
       aria-label="Toggle navigation">
       <i class="bi bi-list"></i>
     </button>
-    <div class="collapse navbar-collapse col-10" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto d-lg-flex nav-links justify-content-center w-100  gap-lg-3 gap-md-3">
+  <div class="collapse navbar-collapse col-8 row" id="navbarSupportedContent">
+      <ul class="col-md-10 navbar-nav ms-auto d-lg-flex nav-links justify-content-center  gap-lg-3 gap-md-3">
         <li class="nav-item">
           <a class="nav-link " aria-current="page" href="./category.html">برامج العمرة</a>
         </li>
@@ -65,19 +65,19 @@
           <a class="nav-link" href="./category.html">برامج الحج</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">معرض الصور </a>
+          <a class="nav-link" href="./album.html">معرض الصور </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href=""> المقالات</a>
+          <a class="nav-link" href="./blogs.html"> المقالات</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact-us">إتصل بنا </a>
+          <a class="nav-link" href="./contact.html">إتصل بنا </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#contact-us">من نحن </a>
         </li>
       </ul>
-      <a href="tel:01208350000" class="-lg-3 hott">
+      <a href="tel:01208350000" class="col-md-2 hott">
         <!-- <img src="assets/img/cards/contact.png" class="nav-contact" alt="Contact"> -->
         <img src="assets/img/icons/hotline2.svg" class="nav-contact" alt="Contact">
       </a>
@@ -311,17 +311,22 @@
       <a href="#" class="show-more px-lg-3 px-2 ">
         <p class="mb-0"> اكتشف المزيد
         </p>
-        <img class="mt-1" src="./assets/img/icons/left.svg" alt="">
+        <img class="mt-" src="./assets/img/icons/left.svg" alt="">
       </a>
     </div>
 
     <div class="horizontal-card-ct  ps-lg-0 container mx-auto">
       <div class="horizontal-card d-flex justify-content-center  align-items-center">
-        <img src="./assets/img/cards/small.png" class="horizontal-card-img" alt="">
+        <a href="./blogs-details.html">
+      <a href="./blogs-details.html">
+          <img src="./assets/img/cards/small.png" class="horizontal-card-img" alt="">
+
+        </a>
+        </a>
         <div class="d-flex flex-column ms-lg-3 horizontal-content-ct px-2">
           <p class="horiz-card-title ">تعرف على مناسك العمرة خطوة بخطوة</p>
           <p class="horizontal-card-desc d-md-flex flex-md-column">اكتشف تفاصيل مناسك العمرة من الإحرام إلى الطواف والسعي، مع إرشادات تساعدك على
-            أداء العمرة بيسر وتفهم. <a href="#" class="read-more-small">اقرأ المزيد</a></p>
+            أداء العمرة بيسر وتفهم. <a href="./blogs-details.html" class="read-more-small">اقرأ المزيد</a></p>
          
         </div>
       </div>
@@ -414,17 +419,19 @@
 
     </div>
     <div class="d-flex justify-content-center">
-      <a href="#" class="show-more px-3 mb-3">
+      <a href="./category.html" class="show-more px-3 mb-3">
         <p class="mb-0">اكتشف برامج الحج
         </p>
-        <img class="mt-lg-2" src="./assets/img/icons/left.svg" alt="">
+        <img class="mt-lg-1" src="./assets/img/icons/left.svg" alt="">
       </a>
     </div>
     <!--&--------------- Carousel hajj End -->
     <div class="horizontal-card-ct  ps-lg-0 container mx-auto">
       <div class="horizontal-card d-flex justify-content-center  align-items-center">
-        <img src="./assets/img/cards/small.png" class="horizontal-card-img" alt="">
-        <div class="d-flex flex-column ms-lg-3 horizontal-content-ct px-2">
+    <a href="./blogs-details.html">
+          <img src="./assets/img/cards/small.png" class="horizontal-card-img" alt="">
+
+        </a>        <div class="d-flex flex-column ms-lg-3 horizontal-content-ct px-2">
           <p class="horiz-card-title ">تعرف على مناسك العمرة خطوة بخطوة</p>
           <p class="horizontal-card-desc">اكتشف تفاصيل مناسك العمرة من الإحرام إلى الطواف والسعي، مع إرشادات تساعدك على
             أداء العمرة بيسر وتفهم.</p>
@@ -879,9 +886,6 @@
 
 
 
-
-
-
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="assets/lib/wow/wow.min.js"></script>
   <script src="assets/lib/easing/easing.min.js"></script>
@@ -890,9 +894,23 @@
   <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
   <!-- Template Javascript -->
   <script src="assets/js/swiper-bundle.min.js"></script>
-  <!-- <script src="script.js"></script> -->
-  <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js"></script>
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+  <script type='text/javascript'
+    src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+  <script type='text/javascript'>
+    var myLink = document.querySelector('a[href="#"]');
+    myLink.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+  </script>
+  <script src="assets/js/package.js"></script>
+  <script src="assets/js/country-key.js"></script>
+  
 </body>
 
 </html>
